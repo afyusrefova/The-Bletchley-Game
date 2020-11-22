@@ -2,6 +2,32 @@
 
 using namespace std;
 
+bool difficultyMenu()
+{
+    int difficultyOption;
+    cin >> difficultyOption;
+
+
+    switch (difficultyOption)
+    {
+    case 1:
+
+        return true;
+        break;
+
+    case 2:
+
+        return true;
+        break;
+
+    default:
+
+        difficultyMenu();
+        break;
+
+    }
+}
+
 bool levelMenu()
 {
     int levelOption;
@@ -10,10 +36,13 @@ bool levelMenu()
     {
     case 1:
 
+        difficultyMenu();
         return true;
         break;
 
     case 2:
+
+        difficultyMenu();
         return true;
         break;
 
