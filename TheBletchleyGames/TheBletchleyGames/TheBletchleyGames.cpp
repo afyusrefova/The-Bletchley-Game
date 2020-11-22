@@ -2,6 +2,29 @@
 
 using namespace std;
 
+bool levelMenu()
+{
+    int levelOption;
+    cin >> levelOption;
+    switch (levelOption)
+    {
+    case 1:
+
+        return true;
+        break;
+
+    case 2:
+        return true;
+        break;
+
+    default:
+
+        levelMenu();
+        break;
+
+    }
+}
+
 bool mainMenu()
 {
     int option;
@@ -10,6 +33,7 @@ bool mainMenu()
     {
     case 1:
 
+        levelMenu();
         return true;
         break;
 
