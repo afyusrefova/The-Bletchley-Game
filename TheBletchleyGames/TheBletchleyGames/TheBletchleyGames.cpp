@@ -110,11 +110,15 @@ bool mainMenu()
 
 int main()
 {
-    int hckerNumbers[4];
-    int germanNumbers[4];
+    int *hackerNumbers;
+    int *germanNumbers;
+    hackerNumbers = new int[4];
+    germanNumbers = new int[4];
     bool exit = true;
     do
     {
         exit = mainMenu();
     } while (exit);
+    delete[]germanNumbers;
+    delete[]hackerNumbers;
 }
