@@ -4,6 +4,8 @@ using namespace std;
 
 bool difficultyMenu()
 {
+    cout << "1. Easy mode" << endl;
+    cout << "2. Hard mode" << endl;
     int difficultyOption;
     cin >> difficultyOption;
 
@@ -30,6 +32,8 @@ bool difficultyMenu()
 
 bool levelMenu()
 {
+    cout << "1. Play vs Computer" << endl;
+    cout << "2. Play vs Player" << endl;
     int levelOption;
     cin >> levelOption;
     switch (levelOption)
@@ -56,6 +60,8 @@ bool levelMenu()
 
 bool mainMenu()
 {
+    cout << "1. Play Game" << endl;
+    cout << "2. Exit" << endl;
     int option;
     cin >> option;
     switch (option)
