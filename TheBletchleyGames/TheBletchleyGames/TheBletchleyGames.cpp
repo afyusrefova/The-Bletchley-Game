@@ -2,6 +2,13 @@
 
 using namespace std;
 
+void input(int numbers[], int gameMaxNumbers=4) {
+    for (int i = 0; i < gameMaxNumbers; i++)
+    {
+        cin >> numbers[i];
+    }
+}
+
 bool difficultyMenu()
 {
     cout << "1. Easy mode" << endl;
@@ -103,6 +110,8 @@ bool mainMenu()
 
 int main()
 {
+    int hckerNumbers[4];
+    int germanNumbers[4];
     bool exit = true;
     do
     {
