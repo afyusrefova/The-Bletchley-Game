@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 using namespace std;
 
@@ -7,9 +7,13 @@ bool difficultyMenu()
     cout << "1. Easy mode" << endl;
     cout << "2. Hard mode" << endl;
     int difficultyOption;
-    cin >> difficultyOption;
+    while (!(cin >> difficultyOption))
+    {
 
-
+        cin.clear(); // clear the error flags
+        cin.ignore(INT_MAX, '\n'); // discard the row
+        cout << "Incorrect input! Try again." << endl;
+    }​​​​​:
     switch (difficultyOption)
     {
     case 1:
@@ -35,7 +39,13 @@ bool levelMenu()
     cout << "1. Play vs Computer" << endl;
     cout << "2. Play vs Player" << endl;
     int levelOption;
-    cin >> levelOption;
+    while (!(cin >> levelOption))
+    {
+
+        cin.clear(); // clear the error flags
+        cin.ignore(INT_MAX, '\n'); // discard the row
+        cout << "Incorrect input! Try again." << endl;
+    }​​​​​:
     switch (levelOption)
     {
     case 1:
@@ -63,7 +73,13 @@ bool mainMenu()
     cout << "1. Play Game" << endl;
     cout << "2. Exit" << endl;
     int option;
-    cin >> option;
+    while (!(cin >> option))
+    {
+
+        cin.clear(); // clear the error flags
+        cin.ignore(INT_MAX, '\n'); // discard the row
+        cout << "Incorrect input! Try again." << endl;
+    }​​​​​:
     switch (option)
     {
     case 1:
