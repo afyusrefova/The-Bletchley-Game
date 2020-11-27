@@ -1,13 +1,28 @@
 ﻿#include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
-void input(int numbers[], int gameMaxNumbers=4) {
+void input(int numbers[], int gameMaxNumbers = 4) {
     for (int i = 0; i < gameMaxNumbers; i++)
     {
         cin >> numbers[i];
+
     }
 }
+
+void filesOutput(string fileName, int lineNumbers) {
+    ifstream infile(fileName);
+    string sLine;
+    for (int i = 0; i < lineNumbers; i++)
+    {
+        getline(infile, sLine);
+        cout << sLine << endl;
+    }
+    infile.close();
+}
+
 
 bool difficultyMenu()
 {
