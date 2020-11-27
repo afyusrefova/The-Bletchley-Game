@@ -23,6 +23,16 @@ void filesOutput(string fileName, int lineNumbers) {
     infile.close();
 }
 
+void skipLine(string fileName, int skipLineNumber)
+{
+    ifstream infile(fileName);
+    string sLine;
+    for (int i = 0; i < skipLineNumber; i++)
+    {
+        getline(infile, sLine);
+    }
+    infile.close();
+}
 
 bool difficultyMenu()
 {
