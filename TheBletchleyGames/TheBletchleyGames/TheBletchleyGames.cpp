@@ -12,26 +12,25 @@ void input(int numbers[], int gameMaxNumbers = 4) {
     }
 }
 
-void filesOutput(string fileName, int lineNumbers) {
+void filesOutput(string fileName, int lineNumbers, bool isThereASkip, int lineSkipNumber) {
     ifstream infile(fileName);
     string sLine;
-    for (int i = 0; i < lineNumbers; i++)
+    if (!(isThereASkip))
     {
-        getline(infile, sLine);
-        cout << sLine << endl;
+        for (int i = 0; i < lineNumbers; i++)
+        {
+            getline(infile, sLine);
+            cout << sLine << endl;
+        }
+        infile.close();
     }
-    infile.close();
-}
-
-void skipLine(string fileName, int skipLineNumber)
-{
-    ifstream infile(fileName);
-    string sLine;
-    for (int i = 0; i < skipLineNumber; i++)
-    {
-        getline(infile, sLine);
+    else {
+        for (int i = 0; i < lineSkipNumber; i++)
+        {
+            getline(infile, sLine);
+        }
+        infile.close();
     }
-    infile.close();
 }
 
 bool difficultyMenu()
