@@ -47,8 +47,7 @@ int checkIfUserDataIsValid() {
 
 bool difficultyMenu()
 {
-    cout << "1. Easy mode" << endl;
-    cout << "2. Hard mode" << endl;
+    filesOutput("Menu's Text.txt", 4, true, 6);
 
     switch (checkIfUserDataIsValid())
     {
@@ -72,8 +71,7 @@ bool difficultyMenu()
 
 bool levelMenu()
 {
-    cout << "1. Play vs Computer" << endl;
-    cout << "2. Play vs Player" << endl;
+    filesOutput("Menu's Text.txt", 4, true, 2);
     switch (checkIfUserDataIsValid())
     {
     case 1:
@@ -98,8 +96,7 @@ bool levelMenu()
 
 bool mainMenu()
 {
-    cout << "1. Play Game" << endl;
-    cout << "2. Exit" << endl;
+    filesOutput("Menu's Text.txt", 2, false, 0);
 
     switch (checkIfUserDataIsValid())
     {

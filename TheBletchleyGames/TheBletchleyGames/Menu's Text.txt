@@ -2,13 +2,9 @@
 2. Exit
 
  
-
-
 1. Play vs Computer
 2. Play vs Player
 
  
-
-
 1. Easy mode
 2. Hard mode
