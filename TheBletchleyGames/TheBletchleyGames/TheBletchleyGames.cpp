@@ -1,16 +1,56 @@
-#include <iostream>
+﻿#include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace std;
+
+void input(int numbers[], int gameMaxNumbers = 4) {
+    for (int i = 0; i < gameMaxNumbers; i++)
+    {
+        cin >> numbers[i];
+
+    }
+}
+
+void filesOutput(string fileName, int lineNumbers, bool isThereASkip, int lineSkipNumber) {
+    ifstream infile(fileName);
+    string sLine;
+    if (!(isThereASkip))
+    {
+        for (int i = 0; i < lineNumbers; i++)
+        {
+            getline(infile, sLine);
+            cout << sLine << endl;
+        }
+        infile.close();
+    }
+    else {
+        for (int i = 0; i < lineSkipNumber; i++)
+        {
+            getline(infile, sLine);
+        }
+        infile.close();
+    }
+}
+
+int checkIfUserDataIsValid() {
+    int dataCheck;
+    cin >> dataCheck;
+    while (!(dataCheck))
+    {
+        cin.clear(); // clear the error flags
+        cin.ignore(INT_MAX, '\n'); // discard the row
+        cout << "Incorrect input! Try again." << endl;
+    }
+    return dataCheck;
+}
 
 bool difficultyMenu()
 {
     cout << "1. Easy mode" << endl;
     cout << "2. Hard mode" << endl;
-    int difficultyOption;
-    cin >> difficultyOption;
 
-
-    switch (difficultyOption)
+    switch (checkIfUserDataIsValid())
     {
     case 1:
 
@@ -34,9 +74,7 @@ bool levelMenu()
 {
     cout << "1. Play vs Computer" << endl;
     cout << "2. Play vs Player" << endl;
-    int levelOption;
-    cin >> levelOption;
-    switch (levelOption)
+    switch (checkIfUserDataIsValid())
     {
     case 1:
 
@@ -62,9 +100,8 @@ bool mainMenu()
 {
     cout << "1. Play Game" << endl;
     cout << "2. Exit" << endl;
-    int option;
-    cin >> option;
-    switch (option)
+
+    switch (checkIfUserDataIsValid())
     {
     case 1:
 
@@ -87,9 +124,15 @@ bool mainMenu()
 
 int main()
 {
+    int *hackerNumbers;
+    int *germanNumbers;
+    hackerNumbers = new int[4];
+    germanNumbers = new int[4];
     bool exit = true;
     do
     {
         exit = mainMenu();
     } while (exit);
+    delete[]germanNumbers;
+    delete[]hackerNumbers;
 }
