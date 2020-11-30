@@ -33,16 +33,20 @@ void filesOutput(string fileName, int lineNumbers, bool isThereASkip, int lineSk
     }
 }
 
-int checkIfUserDataIsValid() {
-    int dataCheck;
-    cin >> dataCheck;
-    while (!(dataCheck))
-    {
-        cin.clear(); // clear the error flags
-        cin.ignore(INT_MAX, '\n'); // discard the row
-        cout << "Incorrect input! Try again." << endl;
-    }
-    return dataCheck;
+int checkIfUserDataIsValid()
+{
+    int value;
+    bool validInput = false;
+    do {
+        cin >> value;
+        if (!(validInput = cin.good())) {
+            cout << "That input is invalid! Try Again!\n";
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+        }
+
+    } while (!validInput);
+    return value;
 }
 
 bool difficultyMenu()
