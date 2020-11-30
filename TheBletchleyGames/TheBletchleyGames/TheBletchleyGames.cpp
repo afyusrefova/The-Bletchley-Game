@@ -12,27 +12,31 @@ void input(int numbers[], int gameMaxNumbers = 4) {
     }
 }
 
-void filesOutput(string fileName, int lineNumbers, bool isThereASkip, int lineSkipNumber) {
-    ifstream infile(fileName);
+void filesOutput(string fileName, int lineNumber, bool isThereASkip, int lineSkipNumber) {
+    ifstream file(fileName);
     string sLine;
-    if (!(isThereASkip))
+    if (isThereASkip)
     {
-        for (int i = 0; i < lineNumbers; i++)
-        {
-            getline(infile, sLine);
-            cout << sLine << endl;
-        }
-        infile.close();
-    }
-    else {
         for (int i = 0; i < lineSkipNumber; i++)
         {
-            getline(infile, sLine);
+            getline(file, sLine);
         }
-        infile.close();
+        for (int i = 0; i < lineNumber; i++)
+        {
+            getline(file, sLine);
+            cout << sLine << endl;
+        }
+        file.close();
+    }
+    else {
+        for (int i = 0; i < lineNumber; i++)
+        {
+            getline(file, sLine);
+            cout << sLine << endl;
+        }
+        file.close();
     }
 }
-
 int checkIfUserDataIsValid()
 {
     int value;
