@@ -12,7 +12,7 @@ void input(int numbers[], int gameMaxNumbers = 4) {
     }
 }
 
-void filesOutput(string fileName, int lineNumber, bool isThereASkip, int lineSkipNumber) {
+void filesOutput(string fileName, int lineNumber, bool isThereASkip=false, int lineSkipNumber=0) {
     ifstream file(fileName);
     string sLine;
     if (isThereASkip)
@@ -37,6 +37,7 @@ void filesOutput(string fileName, int lineNumber, bool isThereASkip, int lineSki
         file.close();
     }
 }
+
 int checkIfUserDataIsValid()
 {
     int value;
@@ -55,7 +56,7 @@ int checkIfUserDataIsValid()
 
 bool difficultyMenu()
 {
-    filesOutput("Menu's Text.txt", 4, true, 6);
+    filesOutput("textFiles/Menu's Text.txt", 4, true, 6);
 
     switch (checkIfUserDataIsValid())
     {
@@ -79,7 +80,7 @@ bool difficultyMenu()
 
 bool levelMenu()
 {
-    filesOutput("Menu's Text.txt", 4, true, 2);
+    filesOutput("textFiles/Menu's Text.txt", 4, true, 2);
     switch (checkIfUserDataIsValid())
     {
     case 1:
@@ -104,7 +105,7 @@ bool levelMenu()
 
 bool mainMenu()
 {
-    filesOutput("Menu's Text.txt", 2, false, 0);
+    filesOutput("textFiles/Menu's Text.txt", 2);
 
     switch (checkIfUserDataIsValid())
     {
