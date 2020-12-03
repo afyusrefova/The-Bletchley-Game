@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <fstream>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -48,6 +49,36 @@ void input(int numbers[], string hardOrEasy) {
                     }
                 }
             }
+        }
+    }
+}
+
+void numberGenerator(int germanNumbers[], string hardOrEasy) {
+    if (hardOrEasy == "hard")
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            germanNumbers[i] = rand() % 8;
+        }
+    }
+    else {
+        int numberContainer[8];
+        int randomiserContainer;
+        int container;
+        for (int i = 0; i < 8; i++)
+        {
+            numberContainer[i] = i;
+        }
+        for (int i = 0; i < 8; i++)
+        {
+            randomiserContainer = (rand() % 7) + 1;
+            container = numberContainer[i];
+            numberContainer[i] = numberContainer[randomiserContainer];
+            numberContainer[randomiserContainer] = container;
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            germanNumbers[i] = numberContainer[i];
         }
     }
 }
