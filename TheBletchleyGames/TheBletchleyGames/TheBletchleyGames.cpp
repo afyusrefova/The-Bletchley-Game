@@ -70,6 +70,18 @@ int checkIfThreAreGuesedNumbers(int hackerNumbers[], int germanNumbers[]) {
     return guestNumbersCount;
 }
 
+int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumbers[]) {
+    int guestNumbersAndPositionCount = 0;
+    for (int i = 0; i < 4; i++)
+    {
+        if (hackerNumbers[i] == germanNumbers[i])
+        {
+            guestNumbersAndPositionCount++;
+        }
+    }
+    return guestNumbersAndPositionCount;
+}
+
 void playerVsPlayerEasyMode(int hackerNumbers[], int germanNumbers[]) {
     for (int i = 0; i < 4; i++)
     {
@@ -82,17 +94,8 @@ void playerVsPlayerEasyMode(int hackerNumbers[], int germanNumbers[]) {
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
     cout << guestNumbersCount << endl;
-
-    int guestNumbersAndPositionCount = 0;
-    for (int i = 0; i < 4; i++)
-    {
-        if (hackerNumbers[i] == germanNumbers[i])
-        {
-            guestNumbersAndPositionCount++;
-        }
-    }
-    cout << guestNumbersAndPositionCount;
-    cout << endl;
+    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+    cout << guestNumbersAndPositionCount <<endl;
 }
 
 bool difficultyMenu(int hackerNumbers[], int germanNumbers[])
