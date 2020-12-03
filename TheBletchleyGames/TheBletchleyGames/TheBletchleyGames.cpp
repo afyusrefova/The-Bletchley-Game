@@ -54,14 +54,48 @@ int checkIfUserDataIsValid()
     return value;
 }
 
-bool difficultyMenu()
+void playerVsPlayerEasyMode(int hackerNumbers[], int germanNumbers[]) {
+    for (int i = 0; i < 4; i++)
+    {
+        cin >> hackerNumbers[i];
+    }
+    for (int i = 0; i < 4; i++)
+    {
+        cin >> germanNumbers[i];
+    }
+    int guestNumbersCount = 0;
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if (hackerNumbers[i] == germanNumbers[j])
+            {
+                guestNumbersCount++;
+            }
+        }
+    }
+    cout << guestNumbersCount<<" ";
+    int guestNumbersAndPositionCount = 0;
+    for (int i = 0; i < 4; i++)
+    {
+        if (hackerNumbers[i] == germanNumbers[i])
+        {
+            guestNumbersAndPositionCount++;
+        }
+    }
+    cout << guestNumbersAndPositionCount;
+    cout << endl;
+}
+
+bool difficultyMenu(int hackerNumbers[], int germanNumbers[])
 {
     filesOutput("textFiles/Menu's Text.txt", 4, true, 6);
 
     switch (checkIfUserDataIsValid())
     {
     case 1:
-
+        playerVsPlayerEasyMode(hackerNumbers, germanNumbers);
         return true;
         break;
 
@@ -72,38 +106,38 @@ bool difficultyMenu()
 
     default:
 
-        difficultyMenu();
+        difficultyMenu(hackerNumbers, germanNumbers);
         break;
 
     }
 }
 
-bool levelMenu()
+bool levelMenu(int hackerNumbers[], int germanNumbers[])
 {
     filesOutput("textFiles/Menu's Text.txt", 4, true, 2);
     switch (checkIfUserDataIsValid())
     {
     case 1:
 
-        difficultyMenu();
+        difficultyMenu(hackerNumbers, germanNumbers);
         return true;
         break;
 
     case 2:
 
-        difficultyMenu();
+        difficultyMenu(hackerNumbers, germanNumbers);
         return true;
         break;
 
     default:
 
-        levelMenu();
+        levelMenu(hackerNumbers, germanNumbers);
         break;
 
     }
 }
 
-bool mainMenu()
+bool mainMenu(int hackerNumbers[], int germanNumbers[])
 {
     filesOutput("textFiles/Menu's Text.txt", 2);
 
@@ -111,7 +145,7 @@ bool mainMenu()
     {
     case 1:
 
-        levelMenu();
+        levelMenu(hackerNumbers, germanNumbers);
         return true;
         break;
 
@@ -122,7 +156,7 @@ bool mainMenu()
 
     default:
 
-        mainMenu();
+        mainMenu(hackerNumbers, germanNumbers);
         break;
 
     }
@@ -137,7 +171,7 @@ int main()
     bool exit = true;
     do
     {
-        exit = mainMenu();
+        exit = mainMenu(hackerNumbers, germanNumbers);
     } while (exit);
     delete[]germanNumbers;
     delete[]hackerNumbers;
