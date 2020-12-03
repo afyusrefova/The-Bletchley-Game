@@ -54,15 +54,7 @@ int checkIfUserDataIsValid()
     return value;
 }
 
-void playerVsPlayerEasyMode(int hackerNumbers[], int germanNumbers[]) {
-    for (int i = 0; i < 4; i++)
-    {
-        cin >> hackerNumbers[i];
-    }
-    for (int i = 0; i < 4; i++)
-    {
-        cin >> germanNumbers[i];
-    }
+int checkIfThreAreGuesedNumbers(int hackerNumbers[], int germanNumbers[]) {
     int guestNumbersCount = 0;
 
     for (int i = 0; i < 4; i++)
@@ -75,7 +67,22 @@ void playerVsPlayerEasyMode(int hackerNumbers[], int germanNumbers[]) {
             }
         }
     }
-    cout << guestNumbersCount<<" ";
+    return guestNumbersCount;
+}
+
+void playerVsPlayerEasyMode(int hackerNumbers[], int germanNumbers[]) {
+    for (int i = 0; i < 4; i++)
+    {
+        cin >> hackerNumbers[i];
+    }
+    for (int i = 0; i < 4; i++)
+    {
+        cin >> germanNumbers[i];
+    }
+
+    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
+    cout << guestNumbersCount << endl;
+
     int guestNumbersAndPositionCount = 0;
     for (int i = 0; i < 4; i++)
     {
