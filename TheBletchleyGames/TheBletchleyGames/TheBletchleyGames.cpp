@@ -82,6 +82,22 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
     return guestNumbersAndPositionCount;
 }
 
+void playerVsPlayerHardMode(int hackerNumbers[], int germanNumbers[]) {
+    for (int i = 0; i < 4; i++)
+    {
+        cin >> hackerNumbers[i];
+    }
+    for (int i = 0; i < 4; i++)
+    {
+        cin >> germanNumbers[i];
+    }
+
+    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
+    cout << guestNumbersCount << endl;
+    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+    cout << guestNumbersAndPositionCount << endl;
+}
+
 void playerVsPlayerEasyMode(int hackerNumbers[], int germanNumbers[]) {
     for (int i = 0; i < 4; i++)
     {
