@@ -83,7 +83,7 @@ void numberGenerator(int germanNumbers[], string hardOrEasy) {
     }
 }
 
-void filesOutput(string fileName, int lineNumber, bool isThereASkip=false, int lineSkipNumber=0) {
+void filesOutput(string fileName, int lineNumber, bool isThereASkip = false, int lineSkipNumber = 0) {
     ifstream file(fileName);
     string sLine;
     if (isThereASkip)
@@ -107,6 +107,19 @@ void filesOutput(string fileName, int lineNumber, bool isThereASkip=false, int l
         }
         file.close();
     }
+}
+
+string turnNumberIntoChar(int integerNumber) {
+    string turnedInteger;
+    integerNumber += 48;
+    turnedInteger = (char)integerNumber;
+    return turnedInteger;
+}
+
+string stringInseter(string fileName, int guestNumbersOrPositions, int insertPosition)
+{
+    fileName.insert(insertPosition, turnNumberIntoChar(guestNumbersOrPositions));
+    return fileName;
 }
 
 int checkIfThreAreGuesedNumbers(int hackerNumbers[], int germanNumbers[]) {
@@ -138,13 +151,48 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
 }
 
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
-    input(hackerNumbers, hardOrEasy);
     input(germanNumbers, hardOrEasy);
+label:
+    input(hackerNumbers, hardOrEasy);
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
-    cout << guestNumbersCount << endl;
     int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
-    cout << guestNumbersAndPositionCount <<endl;
+
+    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
+    string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
+    filesOutput(fileGuestNumbersName, 15);
+    filesOutput(fileGuestNumbersAndPositionName, 15);
+
+    if (guestNumbersAndPositionCount != 4)
+    {
+        goto label;
+    }
+    else {
+        filesOutput("textFiles/Mission completed.txt", 19);
+    }
+}
+
+void playerVsComputer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
+    numberGenerator(germanNumbers, hardOrEasy);
+    label:
+    input(hackerNumbers, hardOrEasy);
+
+    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
+    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+
+    string fileGuestNumbersName = stringInseter("TableVariant.txt", guestNumbersCount, 22);
+    string fileGuestNumbersAndPositionName = stringInseter("TableVariant.txt", guestNumbersAndPositionCount, 22);
+
+    filesOutput(fileGuestNumbersName, 15, false, 0);
+    filesOutput(fileGuestNumbersAndPositionName, 15, false, 0);
+
+    if (guestNumbersAndPositionCount != 4)
+    {
+        goto label;
+    }
+    else {
+        filesOutput("Mission completed.txt", 19, false, 0);
+    }
 }
 
 bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
@@ -161,7 +209,7 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
         }
         else
         {
-            //playerVsPlayer easy mode
+            playerVsComputer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         return true;
         break;
@@ -174,7 +222,7 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
         }
         else
         {
-            //playerVsPlayer hard mode
+            playerVsComputer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         return true;
         break;
@@ -240,8 +288,8 @@ bool mainMenu(int hackerNumbers[], int germanNumbers[])
 
 int main()
 {
-    int *hackerNumbers;
-    int *germanNumbers;
+    int* hackerNumbers;
+    int* germanNumbers;
     hackerNumbers = new int[4];
     germanNumbers = new int[4];
     bool exit = true;
