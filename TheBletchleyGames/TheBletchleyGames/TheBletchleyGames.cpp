@@ -122,16 +122,40 @@ string stringInseter(string fileName, int guestNumbersOrPositions, int insertPos
     return fileName;
 }
 
+void sortNumbers(int sortedNumbers[]) {
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            if (sortedNumbers[i] > sortedNumbers[j])
+            {
+                swap(sortedNumbers[i], sortedNumbers[j]);
+            }
+        }
+    }
+}
+
 int checkIfThreAreGuesedNumbers(int hackerNumbers[], int germanNumbers[]) {
     int guestNumbersCount = 0;
+    int sortedHackerNumbers[4];
+    int sortedGermanNumbers[4];
+
+    for (int i = 0; i < 4; i++)
+    {
+        sortedGermanNumbers[i] = germanNumbers[i];
+        sortedHackerNumbers[i] = hackerNumbers[i];
+    }
+    sortNumbers(sortedGermanNumbers);
+    sortNumbers(sortedHackerNumbers);
 
     for (int i = 0; i < 4; i++)
     {
         for (int j = 0; j < 4; j++)
         {
-            if (hackerNumbers[i] == germanNumbers[j])
+            if (sortedGermanNumbers[i] == sortedHackerNumbers[j])
             {
                 guestNumbersCount++;
+                i++;
             }
         }
     }
@@ -152,7 +176,7 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
 
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     input(germanNumbers, hardOrEasy);
-label:
+    label:
     input(hackerNumbers, hardOrEasy);
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
@@ -202,6 +226,7 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
     switch (checkIfUserDataIsValid())
     {
     case 1:
+
         hardOrEasy = "easy";
         if (humarOrBot == "human")
         {
@@ -215,6 +240,7 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
         break;
 
     case 2:
+
         hardOrEasy = "hard";
         if (humarOrBot == "human")
         {
@@ -242,12 +268,14 @@ bool levelMenu(int hackerNumbers[], int germanNumbers[])
     switch (checkIfUserDataIsValid())
     {
     case 1:
+
         humarOrBot = "computer";
         difficultyMenu(hackerNumbers, germanNumbers, humarOrBot);
         return true;
         break;
 
     case 2:
+
         humarOrBot = "human";
         difficultyMenu(hackerNumbers, germanNumbers, humarOrBot);
         return true;
