@@ -175,47 +175,67 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
 }
 
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
+    int lives = 13;
     input(germanNumbers, hardOrEasy);
     label:
-    input(hackerNumbers, hardOrEasy);
-
-    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
-    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
-
-    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
-    string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
-    filesOutput(fileGuestNumbersName, 15);
-    filesOutput(fileGuestNumbersAndPositionName, 15);
-
-    if (guestNumbersAndPositionCount != 4)
+    if (lives < 1)
     {
-        goto label;
+        filesOutput("textFiles/Mission failed.txt", 13);
     }
-    else {
-        filesOutput("textFiles/Mission completed.txt", 19);
+    else
+    {
+        input(hackerNumbers, hardOrEasy);
+
+        int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
+        int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+
+        string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
+        string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
+        filesOutput(fileGuestNumbersName, 15);
+        filesOutput(fileGuestNumbersAndPositionName, 15);
+
+        lives--;
+
+        if (guestNumbersAndPositionCount != 4)
+        {
+            goto label;
+        }
+        else {
+            filesOutput("textFiles/Mission completed.txt", 19);
+        }
     }
 }
 
 void playerVsComputer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
+    int lives = 13;
     numberGenerator(germanNumbers, hardOrEasy);
     label:
-    input(hackerNumbers, hardOrEasy);
-
-    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
-    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
-
-    string fileGuestNumbersName = stringInseter("TableVariant.txt", guestNumbersCount, 22);
-    string fileGuestNumbersAndPositionName = stringInseter("TableVariant.txt", guestNumbersAndPositionCount, 22);
-
-    filesOutput(fileGuestNumbersName, 15, false, 0);
-    filesOutput(fileGuestNumbersAndPositionName, 15, false, 0);
-
-    if (guestNumbersAndPositionCount != 4)
+    if (lives < 1)
     {
-        goto label;
+        filesOutput("textFiles/Mission failed.txt", 13);
     }
-    else {
-        filesOutput("Mission completed.txt", 19, false, 0);
+    else
+    {
+        input(hackerNumbers, hardOrEasy);
+
+        int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
+        int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+
+        string fileGuestNumbersName = stringInseter("TableVariant.txt", guestNumbersCount, 22);
+        string fileGuestNumbersAndPositionName = stringInseter("TableVariant.txt", guestNumbersAndPositionCount, 22);
+
+        filesOutput(fileGuestNumbersName, 15, false, 0);
+        filesOutput(fileGuestNumbersAndPositionName, 15, false, 0);
+
+        lives--;
+
+        if (guestNumbersAndPositionCount != 4)
+        {
+            goto label;
+        }
+        else {
+            filesOutput("Mission completed.txt", 19, false, 0);
+        }
     }
 }
 
