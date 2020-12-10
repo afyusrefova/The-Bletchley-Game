@@ -24,7 +24,9 @@ int checkIfUserDataIsValid()
 void input(int numbers[], string hardOrEasy) {
     for (int i = 0; i < 4; i++)
     {
+        cout << "Enter your " << i + 1 << " st/nd/ft number: ";
         numbers[i] = checkIfUserDataIsValid();
+        cout << endl;
     }
     for (int i = 0; i < 4; i++)
     {
