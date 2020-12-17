@@ -198,7 +198,6 @@ void gamePlay(int hackerNumbers[], int germanNumbers[], string hardOrEasy, int l
 
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     int lives = 13;
-    input(germanNumbers, hardOrEasy);
     if (lives < 1)
     {
         filesOutput("textFiles/Mission failed.txt", 13);
@@ -212,8 +211,6 @@ void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy)
 
 void playerVsComputer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     int lives = 13;
-    numberGenerator(germanNumbers, hardOrEasy);
-    label:
     if (lives < 1)
     {
         filesOutput("textFiles/Mission failed.txt", 13);
@@ -236,10 +233,12 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
         hardOrEasy = "easy";
         if (humarOrBot == "human")
         {
+            input(germanNumbers, hardOrEasy);
             playerVsPlayer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         else
         {
+            numberGenerator(germanNumbers, hardOrEasy);
             playerVsComputer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         return true;
@@ -250,10 +249,12 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
         hardOrEasy = "hard";
         if (humarOrBot == "human")
         {
+            input(germanNumbers, hardOrEasy);
             playerVsPlayer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         else
         {
+            numberGenerator(germanNumbers, hardOrEasy);
             playerVsComputer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         return true;
