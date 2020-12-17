@@ -176,49 +176,68 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
     return guestNumbersAndPositionCount;
 }
 
-void gamePlay(int hackerNumbers[], int germanNumbers[], string hardOrEasy, int lives) {
-    input(hackerNumbers, hardOrEasy);
-
-    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
-    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
-
-    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
-    string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
-    filesOutput(fileGuestNumbersName, 15);
-    filesOutput(fileGuestNumbersAndPositionName, 15);
-
-    if (guestNumbersAndPositionCount != 4)
-    {
-        gamePlay(hackerNumbers, germanNumbers, hardOrEasy, lives);
-    }
-    else {
-        filesOutput("textFiles/Mission completed.txt", 19);
-    }
-}
-
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     int lives = 13;
+    input(germanNumbers, hardOrEasy);
+    label:
     if (lives < 1)
     {
         filesOutput("textFiles/Mission failed.txt", 13);
     }
     else
     {
-        gamePlay(hackerNumbers, germanNumbers, hardOrEasy, lives);
+        input(hackerNumbers, hardOrEasy);
+
+        int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
+        int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+
+        string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
+        string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
+        filesOutput(fileGuestNumbersName, 15);
+        filesOutput(fileGuestNumbersAndPositionName, 15);
+
         lives--;
+
+        if (guestNumbersAndPositionCount != 4)
+        {
+            goto label;
+        }
+        else {
+            filesOutput("textFiles/Mission completed.txt", 19);
+        }
     }
 }
 
 void playerVsComputer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     int lives = 13;
-    if (lives < 1)
+    numberGenerator(germanNumbers, hardOrEasy);
+    label:
+    if (lives < 1)   
     {
         filesOutput("textFiles/Mission failed.txt", 13);
     }
     else
     {
-        gamePlay(hackerNumbers, germanNumbers, hardOrEasy, lives);
+        input(hackerNumbers, hardOrEasy);
+
+        int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
+        int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+
+        string fileGuestNumbersName = stringInseter("TableVariant.txt", guestNumbersCount, 22);
+        string fileGuestNumbersAndPositionName = stringInseter("TableVariant.txt", guestNumbersAndPositionCount, 22);
+
+        filesOutput(fileGuestNumbersName, 15, false, 0);
+        filesOutput(fileGuestNumbersAndPositionName, 15, false, 0);
+
         lives--;
+
+        if (guestNumbersAndPositionCount != 4)
+        {
+            goto label;
+        }
+        else {
+            filesOutput("Mission completed.txt", 19, false, 0);
+        }
     }
 }
 
@@ -233,12 +252,10 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
         hardOrEasy = "easy";
         if (humarOrBot == "human")
         {
-            input(germanNumbers, hardOrEasy);
             playerVsPlayer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         else
         {
-            numberGenerator(germanNumbers, hardOrEasy);
             playerVsComputer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         return true;
@@ -249,12 +266,10 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
         hardOrEasy = "hard";
         if (humarOrBot == "human")
         {
-            input(germanNumbers, hardOrEasy);
             playerVsPlayer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         else
         {
-            numberGenerator(germanNumbers, hardOrEasy);
             playerVsComputer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         return true;
