@@ -24,9 +24,7 @@ int checkIfUserDataIsValid()
 void input(int numbers[], string hardOrEasy) {
     for (int i = 0; i < 4; i++)
     {
-        cout << "Enter your " << i + 1 << " st/nd/ft number: ";
         numbers[i] = checkIfUserDataIsValid();
-        cout << endl;
     }
     for (int i = 0; i < 4; i++)
     {
@@ -177,67 +175,48 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
 }
 
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
-    int lives = 13;
     input(germanNumbers, hardOrEasy);
-    label:
-    if (lives < 1)
+label:
+    input(hackerNumbers, hardOrEasy);
+
+    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
+    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+
+    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
+    string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
+    filesOutput(fileGuestNumbersName, 15);
+    filesOutput(fileGuestNumbersAndPositionName, 15);
+
+    if (guestNumbersAndPositionCount != 4)
     {
-        filesOutput("textFiles/Mission failed.txt", 13);
+        goto label;
     }
-    else
-    {
-        input(hackerNumbers, hardOrEasy);
-
-        int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
-        int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
-
-        string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
-        string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
-        filesOutput(fileGuestNumbersName, 15);
-        filesOutput(fileGuestNumbersAndPositionName, 15);
-
-        lives--;
-
-        if (guestNumbersAndPositionCount != 4)
-        {
-            goto label;
-        }
-        else {
-            filesOutput("textFiles/Mission completed.txt", 19);
-        }
+    else {
+        filesOutput("textFiles/Mission completed.txt", 19);
     }
 }
 
 void playerVsComputer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
-    int lives = 13;
     numberGenerator(germanNumbers, hardOrEasy);
-    label:
-    if (lives < 1)   
+label:
+
+    input(hackerNumbers, hardOrEasy);
+
+    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
+    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+
+    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
+    string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
+
+    filesOutput(fileGuestNumbersName, 15, false, 0);
+    filesOutput(fileGuestNumbersAndPositionName, 15, false, 0);
+
+    if (guestNumbersAndPositionCount != 4)
     {
-        filesOutput("textFiles/Mission failed.txt", 13);
+        goto label;
     }
-    else
-    {
-        input(hackerNumbers, hardOrEasy);
-
-        int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
-        int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
-
-        string fileGuestNumbersName = stringInseter("TableVariant.txt", guestNumbersCount, 22);
-        string fileGuestNumbersAndPositionName = stringInseter("TableVariant.txt", guestNumbersAndPositionCount, 22);
-
-        filesOutput(fileGuestNumbersName, 15, false, 0);
-        filesOutput(fileGuestNumbersAndPositionName, 15, false, 0);
-
-        lives--;
-
-        if (guestNumbersAndPositionCount != 4)
-        {
-            goto label;
-        }
-        else {
-            filesOutput("Mission completed.txt", 19, false, 0);
-        }
+    else {
+        filesOutput("Mission completed.txt", 19, false, 0);
     }
 }
 
@@ -248,7 +227,6 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
     switch (checkIfUserDataIsValid())
     {
     case 1:
-
         hardOrEasy = "easy";
         if (humarOrBot == "human")
         {
@@ -262,7 +240,6 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
         break;
 
     case 2:
-
         hardOrEasy = "hard";
         if (humarOrBot == "human")
         {
@@ -290,14 +267,12 @@ bool levelMenu(int hackerNumbers[], int germanNumbers[])
     switch (checkIfUserDataIsValid())
     {
     case 1:
-
         humarOrBot = "computer";
         difficultyMenu(hackerNumbers, germanNumbers, humarOrBot);
         return true;
         break;
 
     case 2:
-
         humarOrBot = "human";
         difficultyMenu(hackerNumbers, germanNumbers, humarOrBot);
         return true;
