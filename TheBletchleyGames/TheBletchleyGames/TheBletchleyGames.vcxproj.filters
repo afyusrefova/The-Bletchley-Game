@@ -18,5 +18,19 @@
     <ClCompile Include="TheBletchleyGames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Data Layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Presentation Layer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Data Layer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Presentation Layer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -139,7 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Data Layer.cpp" />
+    <ClCompile Include="Presentation Layer.cpp" />
     <ClCompile Include="TheBletchleyGames.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Data Layer.h" />
+    <ClInclude Include="Presentation Layer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
