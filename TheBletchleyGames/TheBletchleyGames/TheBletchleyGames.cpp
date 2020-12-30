@@ -135,6 +135,15 @@ void sortNumbers(int sortedNumbers[]) {
     }
 }
 
+void livesDisplayer(int lives)
+{
+    for (int i = 0; i < lives; i++)
+    {
+        cout << "<3  ";
+    }
+    cout << endl;
+}
+
 int checkIfThreAreGuesedNumbers(int hackerNumbers[], int germanNumbers[]) {
     int guestNumbersCount = 0;
     int sortedHackerNumbers[4];
@@ -175,8 +184,10 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
 }
 
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
+    int lives = 13;
     input(germanNumbers, hardOrEasy);
 label:
+    livesDisplayer(lives);
     input(hackerNumbers, hardOrEasy);
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
@@ -189,7 +200,15 @@ label:
 
     if (guestNumbersAndPositionCount != 4)
     {
-        goto label;
+        lives--;
+        if (lives <= 0)
+        {
+            filesOutput("textFiles/Mission failed.txt", 19);
+        }
+        else
+        {
+            goto label;
+        }
     }
     else {
         filesOutput("textFiles/Mission completed.txt", 19);
@@ -197,9 +216,10 @@ label:
 }
 
 void playerVsComputer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
+    int lives = 13;
     numberGenerator(germanNumbers, hardOrEasy);
 label:
-
+    livesDisplayer(lives);
     input(hackerNumbers, hardOrEasy);
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
@@ -213,7 +233,15 @@ label:
 
     if (guestNumbersAndPositionCount != 4)
     {
-        goto label;
+        lives--;
+        if (lives <= 0)
+        {
+            filesOutput("textFiles/Mission failed.txt", 19);
+        }
+        else
+        {
+            goto label;
+        }
     }
     else {
         filesOutput("Mission completed.txt", 19, false, 0);
