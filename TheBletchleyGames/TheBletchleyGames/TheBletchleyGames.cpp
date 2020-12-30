@@ -2,8 +2,27 @@
 #include <fstream>
 #include <string>
 #include <ctime>
+#include <sstream> 
 
 using namespace std;
+
+void highscore() {
+    string sLine;
+    fstream file("textFiles/Highscore.txt");
+    getline(file, sLine);
+
+    stringstream intValue(sLine);
+    int number;
+    intValue >> number;
+    number++;
+
+    stringstream ss;
+    ss << number;
+    string str = ss.str();
+    file.seekg(0, ios::beg);
+    file << str;
+    file.close();
+}
 
 int checkIfUserDataIsValid()
 {
@@ -204,6 +223,7 @@ label:
         if (lives <= 0)
         {
             filesOutput("textFiles/Mission failed.txt", 19);
+            highscore();
         }
         else
         {
@@ -212,6 +232,7 @@ label:
     }
     else {
         filesOutput("textFiles/Mission completed.txt", 19);
+        highscore();
     }
 }
 
@@ -237,6 +258,7 @@ label:
         if (lives <= 0)
         {
             filesOutput("textFiles/Mission failed.txt", 19);
+            highscore();
         }
         else
         {
@@ -245,6 +267,7 @@ label:
     }
     else {
         filesOutput("Mission completed.txt", 19, false, 0);
+        highscore();
     }
 }
 
