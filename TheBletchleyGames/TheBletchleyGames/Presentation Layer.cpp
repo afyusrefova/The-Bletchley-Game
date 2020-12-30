@@ -10,15 +10,15 @@ using namespace std;
 void highscore() {
     string sLine;
     fstream file("textFiles/Highscore.txt");
-    getline(file, sLine);
+    getline(file, sLine); // read the first line
 
     stringstream intValue(sLine);
     int number;
-    intValue >> number;
+    intValue >> number; // changes the text into a number
     number++;
 
     stringstream ss;
-    ss << number;
+    ss << number; // changes the number into a text
     string str = ss.str();
     file.seekg(0, ios::beg);
     file << str;
@@ -30,7 +30,7 @@ void filesOutput(string fileName, int lineNumber, bool isThereASkip = false, int
     string sLine;
     if (isThereASkip)
     {
-        for (int i = 0; i < lineSkipNumber; i++)
+        for (int i = 0; i < lineSkipNumber; i++) // skips lines
         {
             getline(file, sLine);
         }

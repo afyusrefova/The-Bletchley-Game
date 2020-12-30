@@ -12,10 +12,10 @@ int checkIfUserDataIsValid()
     bool validInput = false;
     do {
         cin >> value;
-        if (!(validInput = cin.good())) {
+        if (!(validInput = cin.good())) { // checks if the input is valid
             cout << "That input is invalid! Try Again!\n";
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
+            cin.clear(); // clear all errors
+            cin.ignore(INT_MAX, '\n'); // removes the whole row
         }
 
     } while (!validInput);
@@ -32,7 +32,7 @@ void input(int numbers[], string hardOrEasy) {
         if (numbers[i] < 0 or numbers[i]>7)
         {
             cout << "incorect input try again" << endl;
-            input(numbers, hardOrEasy);
+            input(numbers, hardOrEasy); // function call itself if the input is incorrect
         }
     }
     if (hardOrEasy == "easy")
@@ -46,7 +46,7 @@ void input(int numbers[], string hardOrEasy) {
                     if (numbers[i] == numbers[j])
                     {
                         cout << "Incrorrect Input!" << endl;
-                        input(numbers, hardOrEasy);
+                        input(numbers, hardOrEasy); // function call itself if there are repetative numbers
                     }
                 }
             }
@@ -59,7 +59,7 @@ void numberGenerator(int germanNumbers[], string hardOrEasy) {
     {
         for (int i = 0; i < 4; i++)
         {
-            germanNumbers[i] = rand() % 8;
+            germanNumbers[i] = rand() % 8; // generates random number between 1 and 7
         }
     }
     else {
@@ -68,16 +68,16 @@ void numberGenerator(int germanNumbers[], string hardOrEasy) {
         int container;
         for (int i = 0; i < 8; i++)
         {
-            numberContainer[i] = i;
+            numberContainer[i] = i; // initialize an array with value from 1 to 7
         }
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 8; i++) // randomizing the postion of the numbers in the array
         {
             randomiserContainer = (rand() % 7) + 1;
             container = numberContainer[i];
             numberContainer[i] = numberContainer[randomiserContainer];
             numberContainer[randomiserContainer] = container;
         }
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++) // pick the first 4 numbers
         {
             germanNumbers[i] = numberContainer[i];
         }
@@ -120,8 +120,8 @@ int checkIfThreAreGuesedNumbers(int hackerNumbers[], int germanNumbers[]) {
         sortedGermanNumbers[i] = germanNumbers[i];
         sortedHackerNumbers[i] = hackerNumbers[i];
     }
-    sortNumbers(sortedGermanNumbers);
-    sortNumbers(sortedHackerNumbers);
+    sortNumbers(sortedGermanNumbers); // sort the German numbers
+    sortNumbers(sortedHackerNumbers); // sort the hacker numbers
 
     for (int i = 0; i < 4; i++)
     {
@@ -151,26 +151,26 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
 
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     int lives = 13;
-    input(germanNumbers, hardOrEasy);
+    input(germanNumbers, hardOrEasy); // input the German numbers
 label:
     livesDisplayer(lives);
-    input(hackerNumbers, hardOrEasy);
+    input(hackerNumbers, hardOrEasy); // input the hacker numbers
 
-    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
-    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers); // see how many guest numbers are there
+    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers); // // see how many guest numbers and positions are there
 
-    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
-    string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
-    filesOutput(fileGuestNumbersName, 15);
+    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22); // insert character into a string so it maches the text file
+    string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22); 
+    filesOutput(fileGuestNumbersName, 15); // displays the file
     filesOutput(fileGuestNumbersAndPositionName, 15);
 
-    if (guestNumbersAndPositionCount != 4)
+    if (guestNumbersAndPositionCount != 4) // if the game is not ended
     {
-        lives--;
+        lives--; // remove 1 live
         if (lives <= 0)
         {
-            filesOutput("textFiles/Mission failed.txt", 19);
-            highscore();
+            filesOutput("textFiles/Mission failed.txt", 19); // displays the file
+            highscore(); // add game play
         }
         else
         {
