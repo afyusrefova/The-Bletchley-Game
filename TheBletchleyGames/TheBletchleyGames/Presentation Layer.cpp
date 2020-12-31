@@ -60,7 +60,7 @@ void livesDisplayer(int lives)
     cout << endl;
 }
 
-bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
+bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
 {
     filesOutput("textFiles/Menu's Text.txt", 4, true, 6);
     string hardOrEasy;
@@ -68,7 +68,7 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
     {
     case 1:
         hardOrEasy = "easy";
-        if (humarOrBot == "human")
+        if (humanOrBot == "human")
         {
             playerVsPlayer(hackerNumbers, germanNumbers, hardOrEasy);
         }
@@ -81,7 +81,7 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
 
     case 2:
         hardOrEasy = "hard";
-        if (humarOrBot == "human")
+        if (humanOrBot == "human")
         {
             playerVsPlayer(hackerNumbers, germanNumbers, hardOrEasy);
         }
@@ -94,7 +94,7 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
 
     default:
 
-        difficultyMenu(hackerNumbers, germanNumbers, humarOrBot);
+        difficultyMenu(hackerNumbers, germanNumbers, humanOrBot);
         break;
 
     }
@@ -103,18 +103,18 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humarOrBot)
 bool levelMenu(int hackerNumbers[], int germanNumbers[])
 {
     filesOutput("textFiles/Menu's Text.txt", 4, true, 2);
-    string humarOrBot;
+    string humanOrBot;
     switch (checkIfUserDataIsValid())
     {
     case 1:
-        humarOrBot = "computer";
-        difficultyMenu(hackerNumbers, germanNumbers, humarOrBot);
+        humanOrBot = "computer";
+        difficultyMenu(hackerNumbers, germanNumbers, humanOrBot);
         return true;
         break;
 
     case 2:
-        humarOrBot = "human";
-        difficultyMenu(hackerNumbers, germanNumbers, humarOrBot);
+        humanOrBot = "human";
+        difficultyMenu(hackerNumbers, germanNumbers, humanOrBot);
         return true;
         break;
 
