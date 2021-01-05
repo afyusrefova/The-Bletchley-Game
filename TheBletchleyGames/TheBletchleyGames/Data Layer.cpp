@@ -159,6 +159,8 @@ label:
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers); // see how many guest numbers are there
     int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers); // // see how many guest numbers and positions are there
 
+    guestNumbersCount = guestNumbersCount - guestNumbersAndPositionCount;
+
     string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22); // insert character into a string so it maches the text file
     string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22); 
     filesOutput(fileGuestNumbersName, 15); // displays the file
@@ -192,6 +194,8 @@ label:
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
     int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+
+    guestNumbersCount = guestNumbersCount - guestNumbersAndPositionCount;
 
     string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
     string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
