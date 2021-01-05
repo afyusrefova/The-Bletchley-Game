@@ -1,0 +1,23 @@
+displaycontainerw3-displaycontainerhtml{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
+.text-white,.hover_text_white:hover{color:#fff!important}
+.display_middle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%)}
+.jumbo{font-size:64px!important}
+.display_topleft{position:absolute;left:0;top:0}
+.container:after,.container:before,.panel:after,.panel:before,.row:after,.row:before,.row-padding:after,.row-padding:before,
+.xlarge{font-size:24px!important}.-xxlarge{font-size:36px!important}.jumbo{font-size:64px!important}
+.display_bottomleft{position:absolute;left:0;bottom:0}.-display_bottomright{position:absolute;right:0;bottom:0}
+.large{font-size:18px!important}
+.modal{z-index:3;display:none;padding-top:100px;position:fixed;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgb(0,0,0);background-color:rgba(0,0,0,0.4)}
+.modal_content{margin:auto;background-color:#fff;position:relative;padding:0;outline:0;width:600px}
+.animate_zoom {animation:animatezoom 0.6s}@keyframes animatezoom{from{transform:scale(0)} to{transform:scale(1)}}
+.display_container{position:relative}
+.display_container:hover .display_hover{display:block}.display_container:hover span.display_hover{display:inline-block}.display_hover{display:none}
+.btn,.button{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}   
+.disabled,.btn:disabled,.button:disabled{cursor:not-allowed;opacity:0.3}.disabled *,:disabled *{pointer-events:none}
+.btn,.button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+.bar .button{white-space:normal}
+.bar_block .dropdown_hover .button,.bar_block .dropdown_click .button{width:100%;text-align:left;padding:8px 16px}
+.display_topright{position:absolute;right:0;top:0}
+.black,.-hover-black:hover{color:#fff!important;background-color:#000!important}
+.input{padding:8px;display:block;border:none;border-bottom:1px solid #ccc;width:100%}
+.padding16{padding-top:16px!important;padding-bottom:16px!important}.padding24{padding-top:24px!important;padding-bottom:24px!important}
