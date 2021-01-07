@@ -111,8 +111,8 @@ ul {
 
   li a {
 	display: block;
-	background-color: black;
-	color:#1fc3ec;
+    color: white;
+    background-color:black;
 	font-size:23px;
 	padding: 8px;
     text-align:center;
@@ -121,7 +121,7 @@ ul {
   }
 
   li a:hover {
-	color:#242c2e;
+	color:#ee6c4d;
 	transition-duration:0.2s;
   }
 
