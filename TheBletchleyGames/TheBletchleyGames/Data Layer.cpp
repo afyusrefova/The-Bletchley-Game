@@ -1,6 +1,8 @@
+#include <windows.h>
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdlib.h>
 #include <ctime>
 #include <sstream> 
 #include "Presentation Layer.h"
@@ -149,9 +151,33 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
     return guestNumbersAndPositionCount;
 }
 
+int tableColor(int guestParameters) {
+    if (guestParameters==0)
+    {
+        return 4;
+    }
+    else if (guestParameters == 1)
+    {
+        return 12;
+    }
+    else if (guestParameters == 2)
+    {
+        return 14;
+    }
+    else if (guestParameters == 3)
+    {
+        return 10;
+    }
+    else if (guestParameters == 4)
+    {
+        return 1;
+    }
+}
+
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     int lives = 13;
     input(germanNumbers, hardOrEasy); // input the German numbers
+    systemClear();
 label:
     livesDisplayer(lives);
     input(hackerNumbers, hardOrEasy); // input the hacker numbers
@@ -163,8 +189,11 @@ label:
 
     string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22); // insert character into a string so it maches the text file
     string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22); 
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guestNumbersCount));
     filesOutput(fileGuestNumbersName, 15); // displays the file
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guestNumbersAndPositionCount));
     filesOutput(fileGuestNumbersAndPositionName, 15);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 
     if (guestNumbersAndPositionCount != 4) // if the game is not ended
     {
@@ -175,7 +204,7 @@ label:
             highscore(); // add game play
         }
         else
-        {
+        {         
             goto label;
         }
     }

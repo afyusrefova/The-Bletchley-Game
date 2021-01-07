@@ -6,6 +6,7 @@
 #include <sstream> 
 
 using namespace std;
+void systemClear();
 void highscore();
 void filesOutput(string fileName, int lineNumber, bool isThereASkip = false, int lineSkipNumber = 0);
 void livesDisplayer(int lives);

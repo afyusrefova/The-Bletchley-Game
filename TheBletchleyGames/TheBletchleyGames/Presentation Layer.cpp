@@ -1,11 +1,17 @@
+#include <windows.h>
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 #include <string>
 #include <ctime>
 #include <sstream> 
 #include "Data Layer.h"
 
 using namespace std;
+
+void systemClear() {
+    system("CLS");
+}
 
 void highscore() {
     string sLine;
@@ -62,7 +68,8 @@ void livesDisplayer(int lives)
 
 bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
 {
-    filesOutput("textFiles/Menu's Text.txt", 4, true, 6);
+    systemClear();
+    filesOutput("textFiles/Menu's Text.txt", 2, true, 8);
     string hardOrEasy;
     switch (checkIfUserDataIsValid())
     {
@@ -70,10 +77,12 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
         hardOrEasy = "easy";
         if (humanOrBot == "human")
         {
+            systemClear();
             playerVsPlayer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         else
         {
+            systemClear();
             playerVsComputer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         return true;
@@ -83,10 +92,12 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
         hardOrEasy = "hard";
         if (humanOrBot == "human")
         {
+            systemClear();
             playerVsPlayer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         else
         {
+            systemClear();
             playerVsComputer(hackerNumbers, germanNumbers, hardOrEasy);
         }
         return true;
@@ -102,7 +113,8 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
 
 bool levelMenu(int hackerNumbers[], int germanNumbers[])
 {
-    filesOutput("textFiles/Menu's Text.txt", 4, true, 2);
+    systemClear();
+    filesOutput("textFiles/Menu's Text.txt", 2, true, 4);
     string humanOrBot;
     switch (checkIfUserDataIsValid())
     {
@@ -129,7 +141,7 @@ bool levelMenu(int hackerNumbers[], int germanNumbers[])
 bool mainMenu(int hackerNumbers[], int germanNumbers[])
 {
     filesOutput("textFiles/Menu's Text.txt", 2);
-
+    
     switch (checkIfUserDataIsValid())
     {
     case 1:
