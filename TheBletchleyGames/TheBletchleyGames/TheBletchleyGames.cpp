@@ -10,6 +10,7 @@ using namespace std;
 
 int main()
 {
+    filesOutput("textFiles/Greating!.txt",20);
     int* hackerNumbers;
     int* germanNumbers;
     hackerNumbers = new int[4];
