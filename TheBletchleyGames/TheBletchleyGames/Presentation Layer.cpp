@@ -15,7 +15,7 @@ void systemClear() {
 
 void highscore() {
     string sLine;
-    fstream file("textFiles/Highscore.txt");
+    fstream file("HighScore/Highscore.txt");
     getline(file, sLine); // read the first line
 
     stringstream intValue(sLine);
