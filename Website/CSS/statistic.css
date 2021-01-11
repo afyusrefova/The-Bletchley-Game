@@ -1,0 +1,24 @@
+body,h1,h5 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+body {
+  background-image: url("../Photos/background1.jpg");
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+.inner-div{
+	padding:3%;
+	border: solid white;
+	width:93.5%;
+	height:100%;
+	border-radius:32px;
+}
+.aboutus{
+	color:white;
+	padding:1%;
+	border-radius: 32px;
+	background-color:rgba(129, 178, 154, 0.7);
+	margin: 50px auto;
+	width:75%;
+	text-align: justify;
+}
