@@ -9,6 +9,35 @@
 
 using namespace std;
 
+int tableColor(int guestParameters) {
+    if (guestParameters == 0)
+    {
+        return 4;
+    }
+    else if (guestParameters == 1)
+    {
+        return 12;
+    }
+    else if (guestParameters == 2)
+    {
+        return 14;
+    }
+    else if (guestParameters == 3)
+    {
+        return 10;
+    }
+    else if (guestParameters == 4)
+    {
+        return 1;
+    }
+}
+
+void displayErrorMessage() {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+    cout << "Error! Incorect input. Try again!" << endl;
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+}
+
 void systemClear() {
     system("CLS");
 }
@@ -68,9 +97,11 @@ void livesDisplayer(int lives)
 
 bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
 {
-    systemClear();
+    cout << endl;
     filesOutput("textFiles/Menu's Text.txt", 2, true, 8);
+    cout << endl;
     string hardOrEasy;
+    cout << "Enter option: ";
     switch (checkIfUserDataIsValid())
     {
     case 1:
@@ -104,7 +135,7 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
         break;
 
     default:
-
+        displayErrorMessage();
         difficultyMenu(hackerNumbers, germanNumbers, humanOrBot);
         break;
 
@@ -113,9 +144,11 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
 
 bool levelMenu(int hackerNumbers[], int germanNumbers[])
 {
-    systemClear();
+    cout << endl;
     filesOutput("textFiles/Menu's Text.txt", 2, true, 4);
+    cout << endl;
     string humanOrBot;
+    cout << "Enter option: ";
     switch (checkIfUserDataIsValid())
     {
     case 1:
@@ -131,7 +164,7 @@ bool levelMenu(int hackerNumbers[], int germanNumbers[])
         break;
 
     default:
-
+        displayErrorMessage();
         levelMenu(hackerNumbers, germanNumbers);
         break;
 
@@ -140,8 +173,10 @@ bool levelMenu(int hackerNumbers[], int germanNumbers[])
 
 bool mainMenu(int hackerNumbers[], int germanNumbers[])
 {
+    cout << endl;
     filesOutput("textFiles/Menu's Text.txt", 2);
-    
+    cout << endl;
+    cout << "Enter option: ";
     switch (checkIfUserDataIsValid())
     {
     case 1:
@@ -156,7 +191,7 @@ bool mainMenu(int hackerNumbers[], int germanNumbers[])
         break;
 
     default:
-
+        displayErrorMessage();
         mainMenu(hackerNumbers, germanNumbers);
         break;
 

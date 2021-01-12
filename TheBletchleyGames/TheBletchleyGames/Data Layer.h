@@ -5,7 +5,6 @@
 #include <ctime>
 #include <sstream> 
 
-
 using namespace std;
 int checkIfUserDataIsValid();
 void input(int numbers[], string hardOrEasy);

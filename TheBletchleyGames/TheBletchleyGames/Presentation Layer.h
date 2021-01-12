@@ -6,6 +6,8 @@
 #include <sstream> 
 
 using namespace std;
+int tableColor(int guestParameters);
+void displayErrorMessage();
 void systemClear();
 void highscore();
 void filesOutput(string fileName, int lineNumber, bool isThereASkip = false, int lineSkipNumber = 0);

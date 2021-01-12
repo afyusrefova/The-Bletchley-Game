@@ -15,7 +15,7 @@ int checkIfUserDataIsValid()
     do {
         cin >> value;
         if (!(validInput = cin.good())) { // checks if the input is valid
-            cout << "That input is invalid! Try Again!\n";
+            displayErrorMessage();
             cin.clear(); // clear all errors
             cin.ignore(INT_MAX, '\n'); // removes the whole row
         }
@@ -33,7 +33,7 @@ void input(int numbers[], string hardOrEasy) {
     {
         if (numbers[i] < 0 or numbers[i]>7)
         {
-            cout << "incorect input try again" << endl;
+            displayErrorMessage();
             input(numbers, hardOrEasy); // function call itself if the input is incorrect
         }
     }
@@ -47,7 +47,7 @@ void input(int numbers[], string hardOrEasy) {
                 {
                     if (numbers[i] == numbers[j])
                     {
-                        cout << "Incrorrect Input!" << endl;
+                        displayErrorMessage();
                         input(numbers, hardOrEasy); // function call itself if there are repetative numbers
                     }
                 }
@@ -151,35 +151,14 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
     return guestNumbersAndPositionCount;
 }
 
-int tableColor(int guestParameters) {
-    if (guestParameters==0)
-    {
-        return 4;
-    }
-    else if (guestParameters == 1)
-    {
-        return 12;
-    }
-    else if (guestParameters == 2)
-    {
-        return 14;
-    }
-    else if (guestParameters == 3)
-    {
-        return 10;
-    }
-    else if (guestParameters == 4)
-    {
-        return 1;
-    }
-}
-
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     int lives = 13;
+    cout << "German enter your cordinates: ";
     input(germanNumbers, hardOrEasy); // input the German numbers
     systemClear();
 label:
     livesDisplayer(lives);
+    cout << "Hacher enter your cordinates: ";
     input(hackerNumbers, hardOrEasy); // input the hacker numbers
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers); // see how many guest numbers are there
@@ -190,8 +169,10 @@ label:
     string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22); // insert character into a string so it maches the text file
     string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22); 
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guestNumbersCount));
+    cout << "Guest numbers: " << endl;
     filesOutput(fileGuestNumbersName, 15); // displays the file
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guestNumbersAndPositionCount));
+    cout << "Guest numbers and positions: " << endl;
     filesOutput(fileGuestNumbersAndPositionName, 15);
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 
@@ -219,6 +200,7 @@ void playerVsComputer(int hackerNumbers[], int germanNumbers[], string hardOrEas
     numberGenerator(germanNumbers, hardOrEasy);
 label:
     livesDisplayer(lives);
+    cout << "Hacher enter your cordinates: ";
     input(hackerNumbers, hardOrEasy);
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
@@ -226,11 +208,15 @@ label:
 
     guestNumbersCount = guestNumbersCount - guestNumbersAndPositionCount;
 
-    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22);
+    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22); // insert character into a string so it maches the text file
     string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
-
-    filesOutput(fileGuestNumbersName, 15, false, 0);
-    filesOutput(fileGuestNumbersAndPositionName, 15, false, 0);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guestNumbersCount));
+    cout << "Guest numbers: " << endl;
+    filesOutput(fileGuestNumbersName, 15); // displays the file
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guestNumbersAndPositionCount));
+    cout << "Guest numbers and positions: " << endl;
+    filesOutput(fileGuestNumbersAndPositionName, 15);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 
     if (guestNumbersAndPositionCount != 4)
     {
