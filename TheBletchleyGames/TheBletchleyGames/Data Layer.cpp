@@ -61,14 +61,27 @@ int checkIfGermanOrHackerDataIsValid()
 }
 
 
-void input(int numbers[], string hardOrEasy) {
-    for (int i = 0; i < 4; i++)
+void input(int numbers[], string hardOrEasy, string germanOrHacker=" ") {
+    if (germanOrHacker=="german")
     {
-        cout << "Enter a number: ";
-        numbers[i] = checkIfGermanOrHackerDataIsValid();
-        cout << numbers[i];
-        cout << endl;
+        for (int i = 0; i < 4; i++)
+        {
+            cout << "Enter a number: ";
+            numbers[i] = checkIfGermanOrHackerDataIsValid();
+            cout << "*";
+            cout << endl;
+        }
     }
+    else {
+        for (int i = 0; i < 4; i++)
+        {
+            cout << "Enter a number: ";
+            numbers[i] = checkIfGermanOrHackerDataIsValid();
+            cout << numbers[i];
+            cout << endl;
+        }
+    }
+
     for (int i = 0; i < 4; i++)
     {
         if (numbers[i] < 0 or numbers[i]>7)
@@ -194,7 +207,7 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     int lives = 13;
     cout << "German enter your cordinates: "<<endl;
-    input(germanNumbers, hardOrEasy); // input the German numbers
+    input(germanNumbers, hardOrEasy, "german"); // input the German numbers
     systemClear();
 label:
     livesDisplayer(lives);
