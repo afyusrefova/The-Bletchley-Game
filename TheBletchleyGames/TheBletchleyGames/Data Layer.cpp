@@ -205,12 +205,12 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
 
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     int lives = 13;
-    cout << "German enter your cordinates: "<<endl;
+    cout << "German enter your coordinates: "<<endl;
     input(germanNumbers, hardOrEasy, "german"); // input the German numbers
     systemClear();
 label:
     livesDisplayer(lives);
-    cout << "Hacher enter your cordinates: "<<endl;
+    cout << "Hacker enter your coordinates: "<<endl;
     input(hackerNumbers, hardOrEasy); // input the hacker numbers
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers); // see how many guest numbers are there
@@ -252,7 +252,7 @@ void playerVsComputer(int hackerNumbers[], int germanNumbers[], string hardOrEas
     numberGenerator(germanNumbers, hardOrEasy);
 label:
     livesDisplayer(lives);
-    cout << "Hacher enter your cordinates: " << endl;
+    cout << "Hacker enter your coordinates: " << endl;
     input(hackerNumbers, hardOrEasy);
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
