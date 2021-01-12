@@ -57,7 +57,6 @@ int checkIfGermanOrHackerDataIsValid()
     default:
         displayErrorMessage();
         checkIfGermanOrHackerDataIsValid();
-        return 0;
     }
 }
 
@@ -165,7 +164,7 @@ void sortNumbers(int sortedNumbers[]) {
     }
 }
 
-int checkIfThreAreGuessedNumbers(int hackerNumbers[], int germanNumbers[]) {
+int checkIfThereAreGuessedNumbers(int hackerNumbers[], int germanNumbers[]) {
     int guessedNumbersCount = 0;
     int sortedHackerNumbers[4];
     int sortedGermanNumbers[4];
@@ -192,7 +191,7 @@ int checkIfThreAreGuessedNumbers(int hackerNumbers[], int germanNumbers[]) {
     return guessedNumbersCount;
 }
 
-int checkIfThreAreGuessedNumbersAndPosition(int hackerNumbers[], int germanNumbers[]) {
+int checkIfThereAreGuessedNumbersAndPosition(int hackerNumbers[], int germanNumbers[]) {
     int guessedNumbersAndPositionCount = 0;
     for (int i = 0; i < 4; i++)
     {
@@ -214,8 +213,8 @@ label:
     cout << "Hacker enter your coordinates: "<<endl;
     input(hackerNumbers, hardOrEasy); // input the hacker numbers
 
-    int guessedNumbersCount = checkIfThreAreGuessedNumbers(hackerNumbers, germanNumbers); // see how many guessed numbers are there
-    int guessedNumbersAndPositionCount = checkIfThreAreGuessedNumbersAndPosition(hackerNumbers, germanNumbers); // // see how many guessed numbers and positions are there
+    int guessedNumbersCount = checkIfThereAreGuessedNumbers(hackerNumbers, germanNumbers); // see how many guessed numbers are there
+    int guessedNumbersAndPositionCount = checkIfThereAreGuessedNumbersAndPosition(hackerNumbers, germanNumbers); // // see how many guessed numbers and positions are there
 
     guessedNumbersCount = guessedNumbersCount - guessedNumbersAndPositionCount;
 
@@ -256,8 +255,8 @@ label:
     cout << "Hacker enter your coordinates: " << endl;
     input(hackerNumbers, hardOrEasy);
 
-    int guessedNumbersCount = checkIfThreAreGuessedNumbers(hackerNumbers, germanNumbers);
-    int guessedNumbersAndPositionCount = checkIfThreAreGuessedNumbersAndPosition(hackerNumbers, germanNumbers);
+    int guessedNumbersCount = checkIfThereAreGuessedNumbers(hackerNumbers, germanNumbers);
+    int guessedNumbersAndPositionCount = checkIfThereAreGuessedNumbersAndPosition(hackerNumbers, germanNumbers);
 
     guessedNumbersCount = guessedNumbersCount - guessedNumbersAndPositionCount;
 
