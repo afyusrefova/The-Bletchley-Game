@@ -57,6 +57,7 @@ int checkIfGermanOrHackerDataIsValid()
     default:
         displayErrorMessage();
         checkIfGermanOrHackerDataIsValid();
+        return 0;
     }
 }
 
@@ -145,9 +146,9 @@ string turnNumberIntoChar(int integerNumber) {
     return turnedInteger;
 }
 
-string stringInseter(string fileName, int guestNumbersOrPositions, int insertPosition)
+string stringInseter(string fileName, int guessedNumbersOrPositions, int insertPosition)
 {
-    fileName.insert(insertPosition, turnNumberIntoChar(guestNumbersOrPositions));
+    fileName.insert(insertPosition, turnNumberIntoChar(guessedNumbersOrPositions));
     return fileName;
 }
 
@@ -164,8 +165,8 @@ void sortNumbers(int sortedNumbers[]) {
     }
 }
 
-int checkIfThreAreGuesedNumbers(int hackerNumbers[], int germanNumbers[]) {
-    int guestNumbersCount = 0;
+int checkIfThreAreGuessedNumbers(int hackerNumbers[], int germanNumbers[]) {
+    int guessedNumbersCount = 0;
     int sortedHackerNumbers[4];
     int sortedGermanNumbers[4];
 
@@ -183,24 +184,24 @@ int checkIfThreAreGuesedNumbers(int hackerNumbers[], int germanNumbers[]) {
         {
             if (sortedGermanNumbers[i] == sortedHackerNumbers[j])
             {
-                guestNumbersCount++;
+                guessedNumbersCount++;
                 i++;
             }
         }
     }
-    return guestNumbersCount;
+    return guessedNumbersCount;
 }
 
-int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumbers[]) {
-    int guestNumbersAndPositionCount = 0;
+int checkIfThreAreGuessedNumbersAndPosition(int hackerNumbers[], int germanNumbers[]) {
+    int guessedNumbersAndPositionCount = 0;
     for (int i = 0; i < 4; i++)
     {
         if (hackerNumbers[i] == germanNumbers[i])
         {
-            guestNumbersAndPositionCount++;
+            guessedNumbersAndPositionCount++;
         }
     }
-    return guestNumbersAndPositionCount;
+    return guessedNumbersAndPositionCount;
 }
 
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
@@ -209,26 +210,26 @@ void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy)
     input(germanNumbers, hardOrEasy, "german"); // input the German numbers
     systemClear();
 label:
-    livesDisplayer(lives);
+    displayLives(lives);
     cout << "Hacker enter your coordinates: "<<endl;
     input(hackerNumbers, hardOrEasy); // input the hacker numbers
 
-    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers); // see how many guest numbers are there
-    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers); // // see how many guest numbers and positions are there
+    int guessedNumbersCount = checkIfThreAreGuessedNumbers(hackerNumbers, germanNumbers); // see how many guessed numbers are there
+    int guessedNumbersAndPositionCount = checkIfThreAreGuessedNumbersAndPosition(hackerNumbers, germanNumbers); // // see how many guessed numbers and positions are there
 
-    guestNumbersCount = guestNumbersCount - guestNumbersAndPositionCount;
+    guessedNumbersCount = guessedNumbersCount - guessedNumbersAndPositionCount;
 
-    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22); // insert character into a string so it maches the text file
-    string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22); 
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guestNumbersCount));
-    cout << "Guest numbers: " << endl;
-    filesOutput(fileGuestNumbersName, 15); // displays the file
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guestNumbersAndPositionCount));
-    cout << "Guest numbers and positions: " << endl;
-    filesOutput(fileGuestNumbersAndPositionName, 15);
+    string fileGuessedNumbersName = stringInseter("textFiles/TableVariant.txt", guessedNumbersCount, 22); // insert character into a string so it maches the text file
+    string fileGuessedNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guessedNumbersAndPositionCount, 22);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guessedNumbersCount));
+    cout << "Guessed numbers: " << endl;
+    filesOutput(fileGuessedNumbersName, 15); // displays the file
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guessedNumbersAndPositionCount));
+    cout << "Guessed numbers and positions: " << endl;
+    filesOutput(fileGuessedNumbersAndPositionName, 15);
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 
-    if (guestNumbersAndPositionCount != 4) // if the game is not ended
+    if (guessedNumbersAndPositionCount != 4) // if the game is not ended
     {
         lives--; // remove 1 live
         if (lives <= 0)
@@ -251,26 +252,26 @@ void playerVsComputer(int hackerNumbers[], int germanNumbers[], string hardOrEas
     int lives = 13;
     numberGenerator(germanNumbers, hardOrEasy);
 label:
-    livesDisplayer(lives);
+    displayLives(lives);
     cout << "Hacker enter your coordinates: " << endl;
     input(hackerNumbers, hardOrEasy);
 
-    int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
-    int guestNumbersAndPositionCount = checkIfThreAreGuesedNumbersAndPosition(hackerNumbers, germanNumbers);
+    int guessedNumbersCount = checkIfThreAreGuessedNumbers(hackerNumbers, germanNumbers);
+    int guessedNumbersAndPositionCount = checkIfThreAreGuessedNumbersAndPosition(hackerNumbers, germanNumbers);
 
-    guestNumbersCount = guestNumbersCount - guestNumbersAndPositionCount;
+    guessedNumbersCount = guessedNumbersCount - guessedNumbersAndPositionCount;
 
-    string fileGuestNumbersName = stringInseter("textFiles/TableVariant.txt", guestNumbersCount, 22); // insert character into a string so it maches the text file
-    string fileGuestNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guestNumbersAndPositionCount, 22);
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guestNumbersCount));
-    cout << "Guest numbers: " << endl;
-    filesOutput(fileGuestNumbersName, 15); // displays the file
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guestNumbersAndPositionCount));
-    cout << "Guest numbers and positions: " << endl;
-    filesOutput(fileGuestNumbersAndPositionName, 15);
+    string fileGuessedNumbersName = stringInseter("textFiles/TableVariant.txt", guessedNumbersCount, 22); // insert character into a string so it maches the text file
+    string fileGuessedNumbersAndPositionName = stringInseter("textFiles/TableVariant.txt", guessedNumbersAndPositionCount, 22);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guessedNumbersCount));
+    cout << "Guessed numbers: " << endl;
+    filesOutput(fileGuessedNumbersName, 15); // displays the file
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tableColor(guessedNumbersAndPositionCount));
+    cout << "Guessed numbers and positions: " << endl;
+    filesOutput(fileGuessedNumbersAndPositionName, 15);
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 
-    if (guestNumbersAndPositionCount != 4)
+    if (guessedNumbersAndPositionCount != 4)
     {
         lives--;
         if (lives <= 0)

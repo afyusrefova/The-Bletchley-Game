@@ -42,24 +42,24 @@ void greeting() {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
 }
 
-int tableColor(int guestParameters) {
-    if (guestParameters == 0)
+int tableColor(int guessedParameters) {
+    if (guessedParameters == 0)
     {
         return 4;
     }
-    else if (guestParameters == 1)
+    else if (guessedParameters == 1)
     {
         return 12;
     }
-    else if (guestParameters == 2)
+    else if (guessedParameters == 2)
     {
         return 14;
     }
-    else if (guestParameters == 3)
+    else if (guessedParameters == 3)
     {
         return 10;
     }
-    else if (guestParameters == 4)
+    else if (guessedParameters == 4)
     {
         return 1;
     }
@@ -93,7 +93,7 @@ void highscore() {
     file.close();
 }
 
-void livesDisplayer(int lives)
+void displayLives(int lives)
 {
     for (int i = 0; i < lives; i++)
     {
