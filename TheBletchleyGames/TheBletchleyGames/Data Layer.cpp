@@ -60,7 +60,6 @@ int checkIfGermanOrHackerDataIsValid()
     }
 }
 
-
 void input(int numbers[], string hardOrEasy, string germanOrHacker=" ") {
     if (germanOrHacker=="german")
     {

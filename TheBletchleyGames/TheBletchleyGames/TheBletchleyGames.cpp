@@ -13,18 +13,13 @@ using namespace std;
 
 int main()
 {
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
-    filesOutput("textFiles/Greating!.txt", 20);
-    int* hackerNumbers;
-    int* germanNumbers;
-    hackerNumbers = new int[4];
-    germanNumbers = new int[4];
-    bool exit = true;
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+    greeting();
+    int hackerNumbers[4];
+    int germanNumbers[4];
+    bool exit = false;
     do
     {
         exit = mainMenu(hackerNumbers, germanNumbers);
     } while (exit);
-    delete[]germanNumbers;
-    delete[]hackerNumbers;
+    return 0;
 }

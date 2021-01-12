@@ -9,6 +9,38 @@
 
 using namespace std;
 
+void filesOutput(string fileName, int lineNumber, bool isThereASkip = false, int lineSkipNumber = 0) {
+    ifstream file(fileName);
+    string sLine;
+    if (isThereASkip)
+    {
+        for (int i = 0; i < lineSkipNumber; i++) // skips lines
+        {
+            getline(file, sLine);
+        }
+        for (int i = 0; i < lineNumber; i++)
+        {
+            getline(file, sLine);
+            cout << sLine << endl;
+        }
+        file.close();
+    }
+    else {
+        for (int i = 0; i < lineNumber; i++)
+        {
+            getline(file, sLine);
+            cout << sLine << endl;
+        }
+        file.close();
+    }
+}
+
+void greeting() {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 12);
+    filesOutput("textFiles/Greating!.txt", 20);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+}
+
 int tableColor(int guestParameters) {
     if (guestParameters == 0)
     {
@@ -58,32 +90,6 @@ void highscore() {
     file.seekg(0, ios::beg);
     file << str;
     file.close();
-}
-
-void filesOutput(string fileName, int lineNumber, bool isThereASkip = false, int lineSkipNumber = 0) {
-    ifstream file(fileName);
-    string sLine;
-    if (isThereASkip)
-    {
-        for (int i = 0; i < lineSkipNumber; i++) // skips lines
-        {
-            getline(file, sLine);
-        }
-        for (int i = 0; i < lineNumber; i++)
-        {
-            getline(file, sLine);
-            cout << sLine << endl;
-        }
-        file.close();
-    }
-    else {
-        for (int i = 0; i < lineNumber; i++)
-        {
-            getline(file, sLine);
-            cout << sLine << endl;
-        }
-        file.close();
-    }
 }
 
 void livesDisplayer(int lives)

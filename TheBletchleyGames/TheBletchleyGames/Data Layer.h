@@ -7,6 +7,7 @@
 
 using namespace std;
 int checkIfUserDataIsValid();
+int checkIfGermanOrHackerDataIsValid();
 void input(int numbers[], string hardOrEasy);
 void numberGenerator(int germanNumbers[], string hardOrEasy);
 string turnNumberIntoChar(int integerNumber);

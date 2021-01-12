@@ -6,6 +6,7 @@
 #include <sstream> 
 
 using namespace std;
+void greeting();
 int tableColor(int guestParameters);
 void displayErrorMessage();
 void systemClear();
