@@ -1,5 +1,6 @@
 1. Play Game
-2. Exit
+2. Tutorial
+3. Exit
 
  
 1. Play vs Computer

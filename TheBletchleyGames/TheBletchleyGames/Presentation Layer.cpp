@@ -5,6 +5,7 @@
 #include <string>
 #include <ctime>
 #include <sstream> 
+#include <conio.h>
 #include "Data Layer.h"
 
 using namespace std;
@@ -104,7 +105,7 @@ void livesDisplayer(int lives)
 bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
 {
     cout << endl;
-    filesOutput("textFiles/Menu's Text.txt", 2, true, 8);
+    filesOutput("textFiles/Menu's Text.txt", 2, true, 9);
     cout << endl;
     string hardOrEasy;
     cout << "Enter option: ";
@@ -151,7 +152,7 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
 bool levelMenu(int hackerNumbers[], int germanNumbers[])
 {
     cout << endl;
-    filesOutput("textFiles/Menu's Text.txt", 2, true, 4);
+    filesOutput("textFiles/Menu's Text.txt", 2, true, 5);
     cout << endl;
     string humanOrBot;
     cout << "Enter option: ";
@@ -180,7 +181,7 @@ bool levelMenu(int hackerNumbers[], int germanNumbers[])
 bool mainMenu(int hackerNumbers[], int germanNumbers[])
 {
     cout << endl;
-    filesOutput("textFiles/Menu's Text.txt", 2);
+    filesOutput("textFiles/Menu's Text.txt", 3);
     cout << endl;
     cout << "Enter option: ";
     switch (checkIfUserDataIsValid())
@@ -192,6 +193,17 @@ bool mainMenu(int hackerNumbers[], int germanNumbers[])
         break;
 
     case 2:
+
+        systemClear();
+        filesOutput("textFiles/Tutorial.txt", 10);
+        cout << "Press any key to continue...";
+        _getch();
+        systemClear();
+
+        return true;
+        break;
+
+    case 3:
 
         return false;
         break;

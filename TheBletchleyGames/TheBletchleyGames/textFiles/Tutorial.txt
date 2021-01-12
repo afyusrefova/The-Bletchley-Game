@@ -1,0 +1,8 @@
+Description:
+Hello user, I will tell you more about our game.
+The Germans place a combination of 4 random digits in the range between 0 and 7,
+that indicate the coordinates of their battleships. You are the code breaker. You should guess the
+number within 13 lives using the board. You place your guesses. The
+Germans should give an answer with tables whether only a number is guessed or a number with its number
+position. If the code breaker reaches the 13th try and has not guessed the combination the game 
+is over and The Germans win.
