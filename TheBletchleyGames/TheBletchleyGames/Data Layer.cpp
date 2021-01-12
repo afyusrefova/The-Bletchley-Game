@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <ctime>
 #include <sstream> 
+#include <conio.h>
 #include "Presentation Layer.h"
 using namespace std;
 
@@ -24,10 +25,49 @@ int checkIfUserDataIsValid()
     return value;
 }
 
+int checkIfGermanOrHackerDataIsValid()
+{
+    char value = _getch();
+    switch (value)
+    {
+    case '0':
+        return 0;
+        break;
+    case '1':
+        return 1;
+        break;
+    case '2':
+        return 2;
+        break;
+    case '3':
+        return 3;
+        break;
+    case '4':
+        return 4;
+        break;
+    case '5':
+        return 5;
+        break;
+    case '6':
+        return 6;
+        break;
+    case '7':
+        return 7;
+        break;
+    default:
+        displayErrorMessage();
+        checkIfGermanOrHackerDataIsValid();
+    }
+}
+
+
 void input(int numbers[], string hardOrEasy) {
     for (int i = 0; i < 4; i++)
     {
-        numbers[i] = checkIfUserDataIsValid();
+        cout << "Enter a number: ";
+        numbers[i] = checkIfGermanOrHackerDataIsValid();
+        cout << numbers[i];
+        cout << endl;
     }
     for (int i = 0; i < 4; i++)
     {
@@ -153,12 +193,12 @@ int checkIfThreAreGuesedNumbersAndPosition(int hackerNumbers[], int germanNumber
 
 void playerVsPlayer(int hackerNumbers[], int germanNumbers[], string hardOrEasy) {
     int lives = 13;
-    cout << "German enter your cordinates: ";
+    cout << "German enter your cordinates: "<<endl;
     input(germanNumbers, hardOrEasy); // input the German numbers
     systemClear();
 label:
     livesDisplayer(lives);
-    cout << "Hacher enter your cordinates: ";
+    cout << "Hacher enter your cordinates: "<<endl;
     input(hackerNumbers, hardOrEasy); // input the hacker numbers
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers); // see how many guest numbers are there
@@ -200,7 +240,7 @@ void playerVsComputer(int hackerNumbers[], int germanNumbers[], string hardOrEas
     numberGenerator(germanNumbers, hardOrEasy);
 label:
     livesDisplayer(lives);
-    cout << "Hacher enter your cordinates: ";
+    cout << "Hacher enter your cordinates: " << endl;
     input(hackerNumbers, hardOrEasy);
 
     int guestNumbersCount = checkIfThreAreGuesedNumbers(hackerNumbers, germanNumbers);
