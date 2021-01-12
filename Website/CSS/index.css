@@ -1,7 +1,7 @@
 body,h1,h5 {font-family: "Raleway", sans-serif}
 body, html {height: 100%}
 body {
-  background-image: url("../Photos/background1.jpg");
+  background-image: url("../Photos/background2.png");
   min-height: 100%;
   background-position: center;
   background-size: cover;
@@ -21,6 +21,11 @@ background-color:#000;
     color:#fff;
     background-color:#0e8f2e;
 }
+.hover-blue:hover
+{
+    color:#fff;
+    background-color:#1682c0;
+}
 .bar-block {
     height: 17%;
     width:120%;
@@ -39,7 +44,7 @@ a{
 {position:absolute;
 top:50%;
 left:30%;
-color:black;
+color:rgb(255, 255, 255);
 }
 .jumbo
 {
