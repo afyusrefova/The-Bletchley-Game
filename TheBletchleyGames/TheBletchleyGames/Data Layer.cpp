@@ -57,6 +57,7 @@ int checkIfGermanOrHackerDataIsValid()
     default:
         displayErrorMessage();
         checkIfGermanOrHackerDataIsValid();
+        return 0;
     }
 }
 

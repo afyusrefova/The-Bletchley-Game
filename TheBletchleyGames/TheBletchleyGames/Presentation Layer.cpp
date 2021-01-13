@@ -63,6 +63,7 @@ int tableColor(int guessedParameters) {
     {
         return 1;
     }
+    return 11;
 }
 
 void displayErrorMessage() {
@@ -145,8 +146,9 @@ bool difficultyMenu(int hackerNumbers[], int germanNumbers[], string humanOrBot)
         displayErrorMessage();
         difficultyMenu(hackerNumbers, germanNumbers, humanOrBot);
         break;
-
+        
     }
+    return false;
 }
 
 bool levelMenu(int hackerNumbers[], int germanNumbers[])
@@ -174,8 +176,8 @@ bool levelMenu(int hackerNumbers[], int germanNumbers[])
         displayErrorMessage();
         levelMenu(hackerNumbers, germanNumbers);
         break;
-
     }
+    return false;
 }
 
 bool mainMenu(int hackerNumbers[], int germanNumbers[])
@@ -184,6 +186,7 @@ bool mainMenu(int hackerNumbers[], int germanNumbers[])
     filesOutput("textFiles/Menu's Text.txt", 3);
     cout << endl;
     cout << "Enter option: ";
+    int container;
     switch (checkIfUserDataIsValid())
     {
     case 1:
@@ -197,7 +200,7 @@ bool mainMenu(int hackerNumbers[], int germanNumbers[])
         systemClear();
         filesOutput("textFiles/Tutorial.txt", 10);
         cout << "Press any key to continue...";
-        _getch();
+        container = _getch();
         systemClear();
 
         return true;
@@ -212,6 +215,6 @@ bool mainMenu(int hackerNumbers[], int germanNumbers[])
         displayErrorMessage();
         mainMenu(hackerNumbers, germanNumbers);
         break;
-
     }
+    return false;
 }
